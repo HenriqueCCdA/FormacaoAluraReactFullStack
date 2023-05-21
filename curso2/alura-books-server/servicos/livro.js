@@ -30,10 +30,21 @@ function modificaLivro(modificacoes, id) {
 
 }
 
+function deletaLivroPorId(id) {
+
+    let livros = JSON.parse(fs.readFileSync("livros.json"))
+    const livrosFiltrados = livros.filter(livro => livro.id !== id)
+
+    fs.writeFileSync("livros.json", JSON.stringify(livrosFiltrados))
+
+
+}
+
 
 module.exports = {
     getTodosLivros,
     getLivroPorId,
     insereLivro,
     modificaLivro,
+    deletaLivroPorId,
 }
